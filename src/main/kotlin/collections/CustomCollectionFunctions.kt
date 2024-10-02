@@ -9,9 +9,7 @@ package dev.arol.collections
  * // 3
  */
 fun <T> Iterable<T>.customForEach(action: (T) -> Unit) {
-    for (element in this) {
-        action(element)
-    }
+    TODO("Implementar función")
 }
 
 /**
@@ -20,9 +18,7 @@ fun <T> Iterable<T>.customForEach(action: (T) -> Unit) {
  * println(doubled) // Salida: [2, 4, 6]
  */
 fun <T, R> Iterable<T>.customMap(transform: (T) -> R): List<R> {
-    val result = mutableListOf<R>()
-    this.customForEach { result.add(transform(it)) }
-    return result
+    TODO("Implementar función")
 }
 
 /**
@@ -31,13 +27,7 @@ fun <T, R> Iterable<T>.customMap(transform: (T) -> R): List<R> {
  * println(evenNumbers) // Salida: [2, 4]
  */
 fun <T> Iterable<T>.customFilter(predicate: (T) -> Boolean): List<T> {
-    val result = mutableListOf<T>()
-    this.customForEach {
-        if (predicate(it)) {
-            result.add(it)
-        }
-    }
-    return result
+    TODO("Implementar función")
 }
 
 /**
@@ -46,11 +36,7 @@ fun <T> Iterable<T>.customFilter(predicate: (T) -> Boolean): List<T> {
  * println(sum) // Salida: 10
  */
 fun <T, R> Iterable<T>.customFold(initial: R, operation: (acc: R, T) -> R): R {
-    var accumulator = initial
-    for (element in this) {
-        accumulator = operation(accumulator, element)
-    }
-    return accumulator
+    TODO("Implementar función")
 }
 
 /**
@@ -59,13 +45,7 @@ fun <T, R> Iterable<T>.customFold(initial: R, operation: (acc: R, T) -> R): R {
  * println(product) // Salida: 24 (2 * 3 * 4)
  */
 fun <T> Iterable<T>.customReduce(operation: (acc: T, T) -> T): T {
-    val iterator = this.iterator()
-    if (!iterator.hasNext()) throw UnsupportedOperationException("Empty collection can't be reduced.")
-    var accumulator = iterator.next()
-    while (iterator.hasNext()) {
-        accumulator = operation(accumulator, iterator.next())
-    }
-    return accumulator
+    TODO("Implementar función")
 }
 
 /**
@@ -75,16 +55,7 @@ fun <T> Iterable<T>.customReduce(operation: (acc: T, T) -> T): T {
  * println(odd)  // Salida: [1, 3, 5]
  */
 fun <T> Iterable<T>.customPartition(predicate: (T) -> Boolean): Pair<List<T>, List<T>> {
-    val matching = mutableListOf<T>()
-    val nonMatching = mutableListOf<T>()
-    this.customForEach {
-        if (predicate(it)) {
-            matching.add(it)
-        } else {
-            nonMatching.add(it)
-        }
-    }
-    return Pair(matching, nonMatching)
+    TODO("Implementar función")
 }
 
 /**
@@ -93,10 +64,7 @@ fun <T> Iterable<T>.customPartition(predicate: (T) -> Boolean): Pair<List<T>, Li
  * println(allEven) // Salida: true
  */
 fun <T> Iterable<T>.customAll(predicate: (T) -> Boolean): Boolean {
-    for (element in this) {
-        if (!predicate(element)) return false
-    }
-    return true
+    TODO("Implementar función")
 }
 
 /**
@@ -105,5 +73,5 @@ fun <T> Iterable<T>.customAll(predicate: (T) -> Boolean): Boolean {
  * println(hasEven) // Salida: false
  */
 fun <T> Iterable<T>.customAny(predicate: (T) -> Boolean): Boolean {
-    return !this.customAll { !predicate(it) }
+    TODO("Implementar función")
 }
