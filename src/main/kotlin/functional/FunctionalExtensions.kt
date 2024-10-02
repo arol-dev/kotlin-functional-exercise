@@ -7,7 +7,18 @@ package dev.arol.functional
  * println(greetOnce("Luis")) // Salida: null (la función ya fue llamada una vez)
  */
 fun <T, R> ((T) -> R).once(): (T) -> R? {
-    TODO("Implementar función")
+    var hasBeenCalled = false
+    var result: R? = null
+
+    return { input: T ->
+        if (!hasBeenCalled) {
+            result = this(input)
+            hasBeenCalled = true
+            result
+        } else {
+            null
+        }
+    }
 }
 
 /**
@@ -22,7 +33,10 @@ fun <T, R> ((T) -> R).once(): (T) -> R? {
  * println("Computation count: $computationCount") // Salida: Computation count: 1
  */
 fun <T, R> ((T) -> R).memoize(): (T) -> R {
-    TODO("Implementar función")
+    val cache = mutableMapOf<T, R>()
+    return { input: T ->
+        cache.getOrPut(input) { this(input) }
+    }
 }
 
 /**
@@ -33,7 +47,11 @@ fun <T, R> ((T) -> R).memoize(): (T) -> R {
  * println(multiplyByTwo(5)) // Salida: 10
  */
 fun <T, U, V> ((T, U) -> V).curried(): (T) -> (U) -> V {
-    TODO("Implementar función")
+    return { t: T ->
+        { u: U ->
+            this(t, u)
+        }
+    }
 }
 
 /**
@@ -45,5 +63,8 @@ fun <T, U, V> ((T, U) -> V).curried(): (T) -> (U) -> V {
  * println(doubleThenSquare(3)) // Salida: 36 ((3 * 2) al cuadrado)
  */
 infix fun <T, R, V> ((T) -> R).andThen(after: (R) -> V): (T) -> V {
-    TODO("Implementar función")
+    return { t: T ->
+        val r = this(t)
+        after(r)
+    }
 }
